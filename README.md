@@ -69,7 +69,7 @@ This wiki is useful for:
 Start exploring by diving into any category above 👆
 
 # File Structure
-Control-Laws/
+```Control-Laws/
 ├── README.md
 ├── 1-Classical-Controllers/
 │   ├── P-Control.md
@@ -103,3 +103,5 @@ Control-Laws/
     ├── Event-Triggered-Control.md
     ├── Switched-Control.md
     └── Hybrid-Control.md
+```
+    
