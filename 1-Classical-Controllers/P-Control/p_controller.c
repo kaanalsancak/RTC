@@ -10,9 +10,8 @@
  * minimum and maximum limits (saturation).
  */
 /*------------------------------------------------------------------------------------------------*/
-
 #include "p_controller.h"
-
+#include <stddef.h>
 /*------------------------------------------------------------------------------------------------*/
 /**
  * @brief Initializes the P controller parameters including gain, setpoint, and saturation limits.
@@ -56,10 +55,14 @@ void PController_vInit(sPController* psController,
 /*------------------------------------------------------------------------------------------------*/
 float PController_fCompute(sPController* psController, float fMeasurement)
 {
+    /* Validate input parameters */
+    if (psController == NULL) {
+        return 0.0f; /* Handle null  gracefully */
+    }
     float fError = psController->fSetpoint - fMeasurement;
     float fOutput = psController->fKp * fError;
 
-    // Apply saturation limits
+    /* Apply saturation limits */
     if (fOutput > psController->fMaxOutput) {
         fOutput = psController->fMaxOutput;
     } else if (fOutput < psController->fMinOutput) {
